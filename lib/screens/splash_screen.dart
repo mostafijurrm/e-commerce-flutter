@@ -24,7 +24,7 @@ class _SplashState extends State<Splash> {
         },
         onSuccess: (data) {
           print('success');
-          Navigator.of(context).pushReplacementNamed(ROUTE.home);
+          Navigator.of(context).pushReplacementNamed(ROUTE.login);
         },
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:e_commerce/route/route.dart';
 import 'package:e_commerce/screens/dashboard_screen.dart';
 import 'package:e_commerce/themes/light_color.dart';
 import 'package:e_commerce/themes/theme.dart';
@@ -25,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
             quarterTurns: 4,
             child: _icon(
                 Icons.sort,
-                color: Colors.black54
+                color: Colors.black54,
             ),
           ),
           ClipRRect(
@@ -40,10 +41,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       spreadRadius: 10),
                 ],
               ),
-              child: Image.asset(
-                  "assets/user.png",
-                width: 40,
-                height: 40,
+              child: GestureDetector(
+                child: Image.asset(
+                    "assets/user.png",
+                  width: 40,
+                  height: 40,
+                ),
+                onTap: (){
+                  print('click');
+                  Navigator.of(context).pushNamed(ROUTE.login);
+                },
               ),
             ),
           ).ripple(() {}, borderRadius: BorderRadius.all(Radius.circular(13)))
@@ -52,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _icon(IconData icon, {Color color = LightColor.iconColor}) {
+  FlatButton _icon(IconData icon, {Color color = LightColor.iconColor}) {
     return Container(
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -63,7 +70,9 @@ class _HomeScreenState extends State<HomeScreen> {
         icon,
         color: color,
       ),
-    ).ripple(() {}, borderRadius: BorderRadius.all(Radius.circular(13)));
+    ).ripple(() {
+      print('menu click');
+    }, borderRadius: BorderRadius.all(Radius.circular(13)));
   }
 
   Widget _title() {
@@ -125,7 +134,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           SizedBox(width: 20),
-          _icon(Icons.filter_list, color: Colors.black54)
+          _icon(
+              Icons.filter_list,
+              color: Colors.black54
+          )
         ],
       ),
     );
